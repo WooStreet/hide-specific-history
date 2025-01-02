@@ -131,4 +131,6 @@ dist
 
 # devbox
 devbox.lock
-devbox.json
+# Mac
+.DS_Store
+
