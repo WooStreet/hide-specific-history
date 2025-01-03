@@ -1,27 +1,22 @@
 // import "./sw-omnibox.ts";
 // import "./sw-tips.ts";
 console.log("Service Worker Loaded");
+chrome.webNavigation.onCompleted.addListener(
+	(details) => {
+		const fqdns = ["www.nikkei.com"];
+		// 特定のURLにアクセス
+		if (fqdns.some((fqdn) => details.url.includes(fqdn))) {
+			console.log("特定のURLにアクセスしました", details.url);
+			// 履歴を削除
+			historyDeleteUrl(details.url);
+		}
+	},
+	{ url: [{ urlMatches: "https://*/*" }] },
+);
 
-chrome.history.deleteUrl({ url: "https://auctions.yahoo.co.jp/" }, () => {
-	console.log("Deleted");
-});
-
-// chrome.browsingData.remove(
-// 	{
-// 		origins: ["https://auctions.yahoo.co.jp/"],
-// 	},
-// 	{
-// 		cacheStorage: true,
-// 		cookies: true,
-// 		fileSystems: true,
-// 		indexedDB: true,
-// 		localStorage: true,
-// 		serviceWorkers: true,
-// 		webSQL: true,
-// 	},
-// 	() => {
-// 		console.log("Deleted");
-// 	},
-// );
-
-console.log("履歴を消しました。");
+// 履歴を削除する関数
+function historyDeleteUrl(url: string) {
+	chrome.history.deleteUrl({ url }, () => {
+		console.log("Deleted");
+	});
+}
