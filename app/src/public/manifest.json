@@ -4,7 +4,7 @@
   "version": "1.0",
   "description": "Add the reading time to Chrome Extension documentation articles",
   "action": {
-    "default_popup": "index.html"
+    "default_popup": "popup.html"
   },
   "icons": {
     "16": "images/icon-16.png",
@@ -16,10 +16,7 @@
     "service_worker": "assets/scripts/serviceWorker.js"
   },
   "permissions": [
-    "storage",
-    "alarms",
     "history",
-    "browsingData",
     "webNavigation"
   ]
 }

@@ -1,4 +1,6 @@
 import { defineConfig } from "vite";
+// import tailwindcss from "tailwindcss";
+// import autoprefixer from "autoprefixer";
 
 export default defineConfig({
 	// ルートディレクトリを指定
@@ -9,7 +11,7 @@ export default defineConfig({
 		rollupOptions: {
 			input: {
 				// htmlファイルのパスを指定
-				index: "src/index.html",
+				popup: "src/popup.html",
 				settings: "src/pages/settings/index.html",
 				// service workerファイルのパスを指定
 				// バックグラウンドで動作するためhtmlからは呼び出さない
