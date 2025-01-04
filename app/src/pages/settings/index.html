@@ -5,5 +5,13 @@
   </head>
   <body>
     <h1>設定ページ</h1>
+    <!-- サイトを追加 -->
+    <form id="add-site-form">
+      <label for="site-url">サイトURL</label>
+      <input type="url" id="site-url" name="site-url" required />
+      <button type="submit">追加</button>
+      <div id="add-site-error" class="error"></div>
+    </form>
+    <script type="module" src="../../assets/scripts/settings/index.ts"></script>
   </body>
 </html>
