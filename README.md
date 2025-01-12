@@ -11,4 +11,8 @@
 
 ## メモ
 
-vueやreactを使うとcspに引っかかるので、使わないようにする。解決にだいぶ時間がかかる。
+vueやreact,alpineを使うとcspに引っかかるので、使わないようにする。vanillasJSで作る。
+解決にだいぶ時間がかかる。
+
+http://localhost:5173/pages/settings/index.html
+
