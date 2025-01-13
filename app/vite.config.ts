@@ -8,6 +8,8 @@ export default defineConfig({
 	// ビルド時の出力先を指定
 	build: {
 		outDir: "../dist",
+		// ビルド時に出力先のディレクトリを空にする
+		emptyOutDir: true,
 		rollupOptions: {
 			input: {
 				// htmlファイルのパスを指定

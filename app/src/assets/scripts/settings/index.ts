@@ -1,5 +1,6 @@
-console.log("setting/index.ts");
 import "../../css/style.css";
+import "./list-url.ts";
+import { getSites, removeListUrl } from "./list-url.ts";
 
 function addSiteUrl(url: string): void {
 	if (url) {
@@ -9,9 +10,11 @@ function addSiteUrl(url: string): void {
 				sites.push(url);
 				chrome.storage.sync.set({ sites }, () => {
 					console.log(`urlが追加されました: ${url}`);
+					removeListUrl();
+					getSites();
 				});
 			} else {
-				console.log(`このurl名は既に存在します: ${url}`);
+				alert("このurl名は既に存在します");
 			}
 		});
 	} else {
@@ -47,13 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			const siteUrlInput = formData.get("site-url") as string;
 			addSiteUrl(siteUrlInput);
 			modal.classList.add("hidden");
+			window.location.reload();
 		});
 	}
 });
-// ストレージのデータを取得する
-// function getStorageData(): void {
-// 	chrome.storage.sync.get((items: string[]) => {
-// 		const sites = items.sites;
-// 		console.log("sites", sites);
-// 	});
-// }
