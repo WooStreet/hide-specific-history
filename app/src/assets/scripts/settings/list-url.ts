@@ -47,7 +47,7 @@ export function removeListUrl() {
 // ストレージからデータを取得
 export function getSites() {
 	chrome.storage.sync.get({ sites: [] }, (result) => {
-		const sites = result.sites as string[];
+		const sites: string[] = result.sites;
 		htmlListUrlRendering(sites);
 	});
 }
@@ -59,8 +59,16 @@ function removeSite(button: HTMLButtonElement) {
 		return;
 	}
 	console.log("removeSite", url);
-	chrome.storage.sync.remove(url, () => {
-		console.log(`urlを削除しました: ${url}`);
+	chrome.storage.sync.get({ sites: [] }, (result) => {
+		// 現在のサイトリストを取得
+		let sites: string[] = result.sites;
+		// sitesからurlを削除
+		sites = sites.filter((site) => site !== url);
+		chrome.storage.sync.set({ sites }, () => {
+			console.log(`urlを削除しました: ${url}`);
+			removeListUrl();
+			getSites();
+		});
 	});
 }
 
