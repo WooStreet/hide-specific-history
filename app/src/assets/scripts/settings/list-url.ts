@@ -1,7 +1,4 @@
 // 設定したurlのリストを表示する
-// const sites = ["https://www.nikkei.com/", "https://www.yahoo.co.jp/"];
-console.log("listUrl");
-
 // リスト要素を取得し、リスト要素に追加する関数
 function htmlListUrlRendering(listUrl: string[]) {
 	const listElement = document.getElementById("list-url"); // ここでリスト要素を取得
