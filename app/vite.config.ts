@@ -1,8 +1,8 @@
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
-// import tailwindcss from "tailwindcss";
-// import autoprefixer from "autoprefixer";
 
 export default defineConfig({
+	plugins: [tailwindcss()],
 	// ルートディレクトリを指定
 	root: "./src",
 	// ビルド時の出力先を指定
