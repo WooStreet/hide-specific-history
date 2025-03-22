@@ -9,13 +9,14 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17",
-    "typescript": "~5.6.2",
-    "vite": "^6.0.5"
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.15",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.2"
   },
   "dependencies": {
-    "chrome-types": "^0.1.327"
+    "chrome-types": "^0.1.345",
+    "npm-check-updates": "^17.1.16"
   }
 }

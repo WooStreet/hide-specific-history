@@ -5,7 +5,7 @@ import { getSites, removeListUrl } from "./list-url.ts";
 function addSiteUrl(url: string): void {
 	if (url) {
 		chrome.storage.sync.get({ sites: [] }, (result) => {
-			const sites = result.sites as string[];
+			const sites: string[] = result.sites;
 			if (!sites.includes(url)) {
 				sites.push(url);
 				chrome.storage.sync.set({ sites }, () => {
