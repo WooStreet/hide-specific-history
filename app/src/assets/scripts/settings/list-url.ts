@@ -22,8 +22,8 @@ function htmlListUrlRendering(listUrl: string[]) {
 			removeSite(this);
 		});
 		const img = document.createElement("img");
-		img.src = "../../images/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
-		img.alt = "Delete";
+		img.src = "../../images/remove_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
+		img.alt = "Remove";
 		button.appendChild(img);
 		div.appendChild(button);
 		listElement.appendChild(li); // リスト要素に追加
@@ -70,3 +70,10 @@ function removeSite(button: HTMLButtonElement) {
 }
 
 getSites();
+
+document.addEventListener("contextmenu", (event) => {
+	console.log("右クリックイベントを無効化");
+	// デフォルトの右クリックメニューを非表示にする
+	event.preventDefault();
+	chrome.runtime.sendMessage({ action: "showCustomMenu" });
+});
