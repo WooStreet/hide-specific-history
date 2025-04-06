@@ -4,17 +4,19 @@ import { getSites, removeListUrl } from "./list-url.ts";
 
 function addSiteUrl(url: string): void {
 	if (url) {
+		// urlの最後の/を削除
+		const sanitizedUrl = url.endsWith("/") ? url.slice(0, -1) : url;
 		chrome.storage.sync.get({ sites: [] }, (result) => {
 			const sites: string[] = result.sites;
-			if (!sites.includes(url)) {
-				sites.push(url);
+			if (!sites.includes(sanitizedUrl)) {
+				sites.push(sanitizedUrl);
 				chrome.storage.sync.set({ sites }, () => {
-					console.log(`urlが追加されました: ${url}`);
+					console.log(`urlが追加されました: ${sanitizedUrl}`);
 					removeListUrl();
 					getSites();
 				});
 			} else {
-				alert("このurl名は既に存在します");
+				alert("このURL名は既に存在します");
 			}
 		});
 	} else {
@@ -54,3 +56,21 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	}
 });
+
+// 履歴を全て削除する
+function deleteAllHistory(): void {
+	console.log("履歴を全て削除します。");
+	// const deleteButton = document.getElementById("delete-all-history");
+	// if (deleteButton) {
+	//   deleteButton.addEventListener("click", () => {
+	//     chrome.storage.sync.set({ history: [] }, () => {
+	//       console.log("履歴が全て削除されました。");
+	//       alert("履歴が全て削除されました。");
+	//     });
+	//   });
+	// }
+}
+
+// グローバルスコープに公開
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+(window as any).deleteAllHistory = deleteAllHistory;
