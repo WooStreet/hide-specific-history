@@ -7,28 +7,23 @@
 
 <body class="bg-slate-900">
   <div class="p-7">
+    <div class="flex justify-center">
+      <button class="hover:bg-slate-700 rounded-full p-2 flex items-center text-lg font-medium text-white"
+        onclick="deleteAllHistory()">
+        <img src="../../images/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete"
+          class="mr-2" />リストの履歴を全て削除する
+      </button>
+    </div>
     <!-- 追加処理 -->
     <div id="open-modal" class="py-4 flex justify-end">
       <img class="hover:bg-slate-700 rounded-full p-2"
         src="../../images/add_circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" />
     </div>
-    <div class="grid grid-cols-5">
-      <div class="col-span-1">
-        <ul class="text-lg font-medium text-white">
-          <li class="flex items-center justify-between">
-            <button class="hover:bg-slate-700 rounded-full p-2 flex items-center" onclick="deleteAllHistory()">
-              <img src="../../images/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete"
-                class="mr-2" />履歴を全て削除する
-            </button>
-          </li>
-        </ul>
-      </div>
-      <!-- サイトのリスト -->
-      <div class="col-span-4 bg-slate-800 rounded-md p-4">
-        <ul id="list-url">
-        </ul>
-        </di>
-      </div>
+    <!-- サイトのリスト -->
+    <div class="bg-slate-800 rounded-md p-4">
+      <ul id="list-url">
+      </ul>
+      </di>
     </div>
     <!-- モーダル -->
     <div id="modal" class="hidden">
