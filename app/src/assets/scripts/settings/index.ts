@@ -23,12 +23,18 @@ function addSiteUrl(url: string): void {
 		console.error("無効なURLです。");
 	}
 }
-// モーダルを開閉
+function deleteAllSites(): void {
+	alert("全ての履歴を削除しますか？");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+	// モーダルを開閉
 	const openModalButton = document.getElementById("open-modal");
 	const modal = document.getElementById("modal");
 	const cancelButton = document.getElementById("cancel-button");
 	const form = document.getElementById("add-site-form") as HTMLFormElement;
+	// リストの履歴を全て削除するボタン
+	const deleteAllHistoryButton = document.getElementById("delete-all-history");
 
 	// モーダルを開く
 	if (openModalButton && modal && cancelButton) {
@@ -54,23 +60,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			modal.classList.add("hidden");
 			window.location.reload();
 		});
+
+		// リストの履歴を全て削除する
+		if (deleteAllHistoryButton) {
+			deleteAllHistoryButton.addEventListener("click", () => {
+				console.log("deleteAllButton");
+				deleteAllSites();
+			});
+		}
 	}
 });
-
-// 履歴を全て削除する
-function deleteAllHistory(): void {
-	console.log("履歴を全て削除します。");
-	// const deleteButton = document.getElementById("delete-all-history");
-	// if (deleteButton) {
-	//   deleteButton.addEventListener("click", () => {
-	//     chrome.storage.sync.set({ history: [] }, () => {
-	//       console.log("履歴が全て削除されました。");
-	//       alert("履歴が全て削除されました。");
-	//     });
-	//   });
-	// }
-}
-
-// グローバルスコープに公開
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-(window as any).deleteAllHistory = deleteAllHistory;
