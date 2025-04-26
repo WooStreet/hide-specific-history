@@ -23,8 +23,54 @@ function addSiteUrl(url: string): void {
 		console.error("無効なURLです。");
 	}
 }
-function deleteAllSites(): void {
-	alert("全ての履歴を削除しますか？");
+// 履歴を削除する関数
+function historyDeleteUrl(url: string) {
+	chrome.history.deleteUrl({ url }, () => {
+		console.log("Deleted");
+	});
+}
+// StartTimeを取得する関数
+function getStartTime() {
+	const now = new Date();
+	// 5年前
+	now.setFullYear(now.getFullYear() - 5);
+	return now.getTime();
+}
+// リストのurlを取得
+function getListUrl(): Promise<string[]> {
+	return new Promise((resolve, reject) => {
+		chrome.storage.sync.get({ sites: [] }, (result) => {
+			if (chrome.runtime.lastError) {
+				// エラーが発生した場合はrejectを呼び出す
+				reject(new Error("Failed to retrieve sites from storage."));
+			}
+			// 成功した場合はresolveを呼び出す
+			const sites: string[] = result.sites;
+			resolve(sites);
+		});
+	});
+}
+async function deleteAllSites(): Promise<void> {
+	const list = await getListUrl();
+	console.log(list);
+	for (const url of list) {
+		chrome.history.search(
+			{
+				text: url,
+				// 10万件
+				maxResults: 100000,
+				startTime: getStartTime(),
+			},
+			(historyItems) => {
+				console.log(historyItems);
+				for (const item of historyItems) {
+					if (item.url !== undefined) {
+						historyDeleteUrl(item.url);
+					}
+				}
+			},
+		);
+	}
 }
 
 document.addEventListener("DOMContentLoaded", () => {

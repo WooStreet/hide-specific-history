@@ -19,7 +19,7 @@
 		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true,
 		"noUncheckedSideEffectImports": true,
-		"types": ["chrome-types"]
+		"types": ["chrome-types", "@types/chrome"]
 	},
 	"include": ["src"]
 }

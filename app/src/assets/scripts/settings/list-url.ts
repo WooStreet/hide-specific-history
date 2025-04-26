@@ -55,14 +55,12 @@ function removeSite(button: HTMLButtonElement) {
 	if (!url) {
 		return;
 	}
-	console.log("removeSite", url);
 	chrome.storage.sync.get({ sites: [] }, (result) => {
 		// 現在のサイトリストを取得
 		let sites: string[] = result.sites;
 		// sitesからurlを削除
 		sites = sites.filter((site) => site !== url);
 		chrome.storage.sync.set({ sites }, () => {
-			console.log(`urlを削除しました: ${url}`);
 			removeListUrl();
 			getSites();
 		});
