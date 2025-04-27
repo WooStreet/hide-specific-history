@@ -41,10 +41,8 @@ function getListUrl(): Promise<string[]> {
 	return new Promise((resolve, reject) => {
 		chrome.storage.sync.get({ sites: [] }, (result) => {
 			if (chrome.runtime.lastError) {
-				// エラーが発生した場合はrejectを呼び出す
 				reject(new Error("Failed to retrieve sites from storage."));
 			}
-			// 成功した場合はresolveを呼び出す
 			const sites: string[] = result.sites;
 			resolve(sites);
 		});
@@ -52,7 +50,6 @@ function getListUrl(): Promise<string[]> {
 }
 async function deleteAllSites(): Promise<void> {
 	const list = await getListUrl();
-	console.log(list);
 	for (const url of list) {
 		chrome.history.search(
 			{
@@ -70,6 +67,9 @@ async function deleteAllSites(): Promise<void> {
 				}
 			},
 		);
+	}
+	if (list.length > 0) {
+		alert("リストの履歴を全て削除することができました");
 	}
 }
 

@@ -66,12 +66,4 @@ function removeSite(button: HTMLButtonElement) {
 		});
 	});
 }
-
 getSites();
-
-document.addEventListener("contextmenu", (event) => {
-	console.log("右クリックイベントを無効化");
-	// デフォルトの右クリックメニューを非表示にする
-	event.preventDefault();
-	chrome.runtime.sendMessage({ action: "showCustomMenu" });
-});
