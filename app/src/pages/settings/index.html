@@ -8,11 +8,14 @@
 <body class="bg-slate-900">
   <div class="p-7">
     <div class="flex justify-center">
-      <button id="delete-all-history"
-        class="hover:bg-slate-700 rounded-full p-2 flex items-center text-lg font-medium text-white">
-        <img src="../../images/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete"
-          class="mr-2" />リストの履歴を全て削除する
-      </button>
+      <div class="flex flex-col">
+        <button id="delete-all-history"
+          class="hover:bg-slate-700 rounded-full p-2 flex items-center text-lg font-medium text-white">
+          <img src="../../images/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete"
+            class="mr-2" />リストの履歴を全て削除する
+        </button>
+        <small class="text-white">※ 対象は5年間の10万件です。</small>
+      </div>
     </div>
     <!-- 追加処理 -->
     <div id="open-modal" class="py-4 flex justify-end">
