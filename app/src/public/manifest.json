@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Reading time",
-  "version": "1.0",
-  "description": "Add the reading time to Chrome Extension documentation articles",
+  "name": "Hide Specific History",
+  "version": "1.0.1",
+  "description": "This is a chrome extension to keep certain URLs out of the history.",
   "action": {
     "default_popup": "popup.html"
   },
@@ -19,7 +19,6 @@
     "history",
     "webNavigation",
     "tabs",
-    "storage",
-    "contextMenus"
+    "storage"
   ]
 }
