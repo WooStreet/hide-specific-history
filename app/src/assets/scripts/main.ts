@@ -6,7 +6,3 @@ if (openSettingsButton) {
 		chrome.tabs.create({ url: "pages/settings/index.html" });
 	});
 }
-
-chrome.action.onClicked.addListener(() => {
-	chrome.tabs.create({ url: "pages/settings/index.html" });
-});
