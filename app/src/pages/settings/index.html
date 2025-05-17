@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+</head>
+
+<body class="bg-slate-900">
+  <div class="p-7">
+    <div class="flex justify-center">
+      <div class="flex flex-col">
+        <button id="delete-all-history"
+          class="hover:bg-slate-700 rounded-full p-2 flex items-center text-lg font-medium text-white">
+          <img src="../../images/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete"
+            class="mr-2" />リストの履歴を全て削除する
+        </button>
+        <small class="text-white">※ 過去5年間の履歴の10万件が対象になります。</small>
+      </div>
+    </div>
+    <!-- 追加処理 -->
+    <div id="open-modal" class="py-4 flex justify-end">
+      <img class="hover:bg-slate-700 rounded-full p-2"
+        src="../../images/add_circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" />
+    </div>
+    <!-- サイトのリスト -->
+    <div class="bg-slate-800 rounded-md p-4">
+      <ul id="list-url">
+      </ul>
+      </di>
+    </div>
+    <!-- モーダル -->
+    <div id="modal" class="hidden">
+      <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-slate-800 w-96 p-4 rounded-md">
+          <form id="add-site-form">
+            <label class="text-slate-100">サイトURLを追加</label>
+            <input type="url" name="site-url" required class="w-full p-2 rounded-md bg-slate-700 text-slate-100"
+              placeholder="https://examaple.com" />
+            <div class="flex justify-end py-2">
+              <button type="button" id="cancel-button" class="text-slate-100 p-2 rounded-md ml-2">キャンセル</button>
+              <button type="submit" class="bg-slate-700 text-slate-100 p-2 rounded-md">保存</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="../../assets/scripts/settings/index.ts"></script>
+</body>
+
+</html>
